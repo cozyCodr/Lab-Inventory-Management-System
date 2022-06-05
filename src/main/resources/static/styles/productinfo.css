@@ -1,0 +1,22 @@
+.cust-image {
+    width: 200px;
+    height: 200px;
+}
+.product-id-img {
+    height: 100%;
+    display:flex;
+    justify-content: flex-start;
+}
+.prod-img-container {
+    width: fit-content;
+    height: auto;
+    width: 200px;
+    margin-right: 1rem;
+}
+
+.product-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height:230px;
+}

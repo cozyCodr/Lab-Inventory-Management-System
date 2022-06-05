@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>CBU LIMS | Ordered Inventory</title>
+    <link rel="stylesheet" href="./dashboard.css" type="text/css">
+    <link rel="stylesheet" href="./productinfo.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"
+        type="text/css" />
+</head>
+
+<body>
+
+        <aside class="side-nav" id="show-side-navigation1">
+        
+          <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
+        
+        
+          <div class="heading">
+            <img
+              src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
+              alt="">
+            <div class="info">
+              <h3><a href="#">
+                  [[${#request.userPrincipal.principal.fullName}]]
+                </a></h3>
+              <p>Lab Assistant</p>
+            </div>
+          </div>
+        
+          <ul class="categories">
+        
+            <p>
+              <i class="fa fa-home fa-fw" aria-hidden="true"></i>
+              <a href="/"> Lab Summary</a>
+            </p>
+        
+            <li><i class="fa fa-support fa-fw"></i><a href="#"> Chemicals</a>
+              <ul class="side-nav-dropdown">
+                <li><a href="/chemicals/all">View All</a></li>
+                <li><a href="/chemicals/toexpire">Soon to Expire</a></li>
+                <li><a href="/chemicals/addnew">Add New</a></li>
+              </ul>
+            </li>
+        
+            <li><i class="fa fa-envelope fa-fw"></i><a href="#"> Instruments</a>
+              <ul class="side-nav-dropdown">
+                <li><a href="/instruments/all">View All</a></li>
+                <li><a href="/instruments/damaged">Damaged</a></li>
+                <li><a href="/instruments/addnew">Add New</a></li>
+              </ul>
+            </li>
+        
+            <!-- User Manual -->
+            <p>
+              <i class="fa fa-book fa-fw"></i>
+              <a href="/documentation"> Documentation</a>
+            </p>
+            <p>
+              <i class="fa fa-handshake-o fa-fw"></i>
+              <a href="/ordered"> Ordered</a>
+            </p>
+            <p>
+              <i class="fa fa-quote-right fa-fw"></i>
+              <a href="/notify"> Notify Purchasing</a>
+            </p>
+            <p>
+              <i class="fa fa-bell fa-fw"></i>
+              <a href="/notifications"> Notifications <span class="num prim">6</span></a>
+            </p>
+            <p>
+              <i class="fa fa-wrench fa-fw"></i>
+              <a href="/settings"> Settings </a>
+            </p>
+            <p>
+              <i class="fa fa-code fa-fw"></i>
+              <a href="/about"> About the Developers</a>
+            </p>
+            <br /><br />
+            <form th:action="@{/logout}" style="width: 80%; margin: auto">
+              <button class="btn btn-danger btn-block" type="submit">Logout</button>
+            </form>
+          </ul>
+        </aside>
+
+    <section id="contents">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <i class="fa fa-align-right"></i>
+                    </button>
+                    <a class="navbar-brand" href="#">My<span class="main-color">Lab</span></a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="welcome">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content product-id-img">
+                            <div class="prod-img-container">
+                                <img  src="./b-b.jpg" alt="..." class="img-thumbnail cust-image">
+                            </div>
+                            <div class="product-text">
+                                <h2>Burnsen Burner</h2>
+                                <p>ID: INS495630</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="statistics">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <h3>Comments</h3>
+                            <p class="font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, cupiditate velit. Exercitationem totam quis, optio quod ex consectetur iusto aut fugiat, facere eligendi quas soluta quia aspernatur iste recusandae voluptas vel hic qui magnam autem dolorem, nobis officia culpa. Ducimus esse consequatur nobis architecto pariatur labore necessitatibus ipsa? Animi commodi autem maiores sequi accusamus soluta labore, impedit veritatis quod quia eaque aspernatur nihil error natus, quo optio sed aliquid fuga accusantium.</p>
+                            
+                        </div>
+                        <div class="box">
+                            <em>Sent on 22/04/2022 by ADMIN</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="welcome">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content">
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: .5rem 1rem">
+                                <h2>Key</h2>
+                                <p>Key of used indicators</p>
+                            </div>
+                            <div style="padding: 1rem">
+                                
+                                <div class="key-content">
+                                    <p style="width: 50%;"> Read More </p>
+                                    <div style="width: 50%;">
+                                        <i class="fa fa-envelope-open"></i>
+                                    </div>
+                                </div>
+                                <div class="key-content">
+                                    <p style="width: 50%;"> Delete Entry</p>
+                                    <div style="width: 50%;">
+                                        <i class="fa fa-trash"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src='http://code.jquery.com/jquery-latest.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+    <script src="./dash.js" type="text/javascript"></script>
+</body>
+
+</html>

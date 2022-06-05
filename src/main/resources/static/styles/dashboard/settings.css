@@ -1,0 +1,49 @@
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+p {
+    font-family: monospace, monospace;
+    letter-spacing: 0.1em;
+}
+label {
+    letter-spacing: 0.1em;
+}
+
+#searchBox {
+	outline: none;
+    border: 0;
+    padding-left: 0.5em;
+    font-weight: lighter;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #2a2b3d;
+	margin-left: 1rem;
+}
+input[type="text"]:focus {
+    outline: none;
+    padding-left: 0.5em;
+    font-weight: lighter;
+}
+table {
+    font-family: Arial, sans-serif;
+}
+
+thead {
+    letter-spacing: 0.2em;
+    word-spacing: 0.25em;
+}
+#tableBody {
+    letter-spacing: 0.1em;
+    word-spacing: 0.25em;
+    font-size: 13px;
+}
+.collapse1 {
+	overflow-y:scroll;
+	max-height:200px
+}
+.modal-search-container{
+	display:flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}

@@ -82,7 +82,7 @@
               <a href="/about"> About the Developers</a>
             </p>
             <br /><br />
-            <form th:action="@{/logout}" style="width: 80%; margin: auto">
+            <form th:action="@{logout}" method="post" style="width: 80%; margin: auto">
               <button class="btn btn-danger btn-block" type="submit">Logout</button>
             </form>
           </ul>
@@ -125,27 +125,36 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box">
-                            <form action="#" th:action="@{/addchemical}" th:object="${editrecord}"  method="post" style="max-width: 400px; margin: auto;">
+                            <form action="#" th:action="@{/saveinstrument}" th:object="${editrecord}"  method="post" style="max-width: 400px; margin: auto;">
                                <div class="form-group">
                                     <label for="exampleFormControlInput1">Id</label>
-                                    <input th:field="*{chemId}" type="number" class="cust-form-control" readonly>
+                                    <input th:field="*{id}" type="number" class="cust-form-control" readonly>
                                 </div>
                                <div class="form-group">
                                     <label for="exampleFormControlInput1">Name</label>
-                                    <input th:field="*{chemName}" type="text" class="cust-form-control" readonly>
+                                    <input th:field="*{insName}" type="text" class="cust-form-control" readonly>
                                 </div>
          
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Quantity (L)</label>
-                                    <input th:field="*{chemQuantity}" type="number" class="cust-form-control" required>
+                                    <input th:field="*{insQuantity}" type="number" class="cust-form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Threshold</label>
-                                    <input th:field="*{chemicalThreshold}" type="number" class="cust-form-control" required>
+                                    <input th:field="*{instrumentThreshold}" type="number" class="cust-form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Expiry Date</label>
-                                    <input th:field="*{expiryDate}" type="date" class="cust-form-control" required>
+                                    <label for="exampleFormControlInput1">Condition (is damaged?)</label>
+                                    <div>
+	                                    <select class="cust-form-control" th:field="*{insCondition}" >
+	                                    	<option type="text" value="Not Damaged">Not Damaged</option>
+	                                    	<option type="text" value="Damaged" >Damaged</option>
+	                                    </select >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Damaged Qty</label>
+                                    <input th:field="*{damagedQty}" type="number" class="cust-form-control" required>
                                 </div>
                                 <button class="btn btn-primary btn-block" type="submit">Update</button>
                             </form>

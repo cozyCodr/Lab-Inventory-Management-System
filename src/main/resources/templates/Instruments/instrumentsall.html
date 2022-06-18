@@ -84,7 +84,7 @@
               <a href="/about"> About the Developers</a>
             </p>
             <br /><br />
-            <form th:action="@{/logout}" style="width: 80%; margin: auto">
+            <form th:action="@{logout}" method="post" style="width: 80%; margin: auto">
               <button class="btn btn-danger btn-block" type="submit">Logout</button>
             </form>
           </ul>
@@ -139,15 +139,15 @@
                                 <tbody id="tableBody">
                                 	<tr th:each= "instrument: ${allinstruments}">
 	                                	<td th:text="${instrument.insName}"></td>
-	                                	<td >Good</td>
+	                                	<td th:text="${instrument.insCondition}  + ' ' + '(' + ${instrument.damagedQty} + ')' "></td>
 	                                	<td th:text="${instrument.insQuantity}"></td>
 	                                	<td>
 		                            		<!--Edit Button Start -->
 											<!-- Button trigger modal -->  
-											<a th:href="@{/editinstrument(insId=${instrument.id})}" >
+											<a th:href="@{/editinstrument(id=${instrument.id})}" >
 												<i class="fa fa-edit" style="color:orange"></i>
 											</a>
-											<a th:href="@{/deleteinstrument(insId=${instrument.id})}" >
+											<a th:href="@{/deleteinstrument(id=${instrument.id})}" >
 											  <i class="fa fa-trash" style="color: tomato"></i>
 											</a>
 		                                </td>

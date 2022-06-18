@@ -20,7 +20,13 @@ public class Instrument{
 	private String insName;
 	
 	@Column(name="insCondition")
-	private boolean insCondition;
+	private String insCondition;
+	
+	@Column(name="Damaged")
+	private boolean damaged = false;
+	
+	@Column(name="damagedQty")
+	private int damagedQty;
 	
 	@Column(name="instrumentThreshold")
 	private int instrumentThreshold;
@@ -57,12 +63,28 @@ public class Instrument{
 		this.insName = insName;
 	}
 
-	public boolean getInsCondition() {
+	public String getInsCondition() {
 		return insCondition;
 	}
 
-	public void setInsCondition(boolean insCondition) {
+	public void setInsCondition(String insCondition) {
 		this.insCondition = insCondition;
+	}
+
+	public boolean isDamaged() {
+		return damaged;
+	}
+
+	public void setDamaged(boolean damaged) {
+		this.damaged = damaged;
+	}
+
+	public int getDamagedQty() {
+		return damagedQty;
+	}
+
+	public void setDamagedQty(int damagedQty) {
+		this.damagedQty = damagedQty;
 	}
 	
 	

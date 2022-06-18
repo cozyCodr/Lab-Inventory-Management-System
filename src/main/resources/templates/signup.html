@@ -2,19 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>CBU LIMS | Login</title>
+	<title>CBU LIMS | Sign Up</title>
 	<link rel="stylesheet" href="styles/signup.css" type="text/css">
 </head>
 <body>
 	<div class="login">
-		<h1>CBU LIMS</h1>
+		<div class="img-div">
+			<img class="logo" th:src="@{images/cbulogo.png}">
+		</div>
 	    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
 	    	<input type="text" name="u" th:field="*{firstName}" placeholder="First Name" required="required" />
 	    	<input type="text" name="u" th:field="*{lastName}" placeholder="Last Name" required="required" />
 	    	<input type="email" name="u" th:field="*{email}" placeholder="Email" required="required" />
 	        <input type="password" name="p" th:field="*{password}" placeholder="Password" required="required" />
-	        <input type="submit" class="btn btn-primary btn-block btn-large">
-	        <p>Already have an account? <a href="/login">Login</a></p>
+	        <input type="submit" class="btn btn-primary">
+	        <div class="signup-text">
+	        	<p>Already have an account? <a href="/login">Login</a></p>
+	        </div>
 	    </form>
 	</div>
 </body>

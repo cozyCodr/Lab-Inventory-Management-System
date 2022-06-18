@@ -27,15 +27,26 @@ public class chemical {
 	@Column(name="chemCondition")
 	private String chemCondition;
 	
-	@Column(name="chemicalThreshold")
-	private int chemicalThreshold;
+	@Column(name="chemMin")
+	private int chemMin = 0;
+	
+	@Column(name="chemMax")
+	private int chemMax = 0;
 
-	public int getChemicalThreshold() {
-		return chemicalThreshold;
+	public int getChemMax() {
+		return chemMax;
 	}
 
-	public void setChemicalThreshold(int chemicalThreshold) {
-		this.chemicalThreshold = chemicalThreshold;
+	public void setChemMax(int chemMax) {
+		this.chemMax = chemMax;
+	}
+
+	public int getChemMin() {
+		return chemMin;
+	}
+
+	public void setChemMin(int chemMin) {
+		this.chemMin = chemMin;
 	}
 
 	public Integer getChemId() {

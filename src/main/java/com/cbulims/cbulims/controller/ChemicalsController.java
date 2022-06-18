@@ -1,5 +1,7 @@
 package com.cbulims.cbulims.controller;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +47,19 @@ public class ChemicalsController {
 	
 	@PostMapping("addchemical")
 	public String addNewChemical(@ModelAttribute("newchemical")chemical chem) {
-		chemicalRepository.save(chem);
+		chemical subjectChem = chemicalRepository.findByChemName(chem.getChemName());
+		if (subjectChem != null) {
+			subjectChem.setChemQuantity(subjectChem.getChemQuantity() + chem.getChemQuantity());
+			subjectChem.setChemCondition(chem.getChemCondition());
+			subjectChem.setChemMin(chem.getChemMin());
+			subjectChem.setChemMax(chem.getChemMax());
+			subjectChem.setExpiryDate(chem.getExpiryDate());
+			chemicalRepository.save(subjectChem);
+		}
+		else {
+			chemicalRepository.save(chem);
+		}
+		
 		return "redirect:/chemicals/all";
 	}
 	

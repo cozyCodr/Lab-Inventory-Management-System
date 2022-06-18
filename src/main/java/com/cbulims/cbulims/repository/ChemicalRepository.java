@@ -11,5 +11,6 @@ import com.cbulims.cbulims.model.chemical;
 public interface ChemicalRepository extends JpaRepository<chemical, Integer> {
 	
 	List<chemical> findByOrderByExpiryDateAsc();
-
+	chemical findByChemName(String string);
+	
 }

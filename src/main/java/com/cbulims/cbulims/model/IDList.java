@@ -21,6 +21,28 @@ public class IDList {
 	@Column(name="productName")
 	private String productname;
 
+	@Column(name="min")
+	private int minimum;
+	
+	@Column(name="max")
+	private int maximum;
+	
+	public int getMinimum() {
+		return minimum;
+	}
+
+	public void setMinimum(int minimum) {
+		this.minimum = minimum;
+	}
+
+	public int getMaximum() {
+		return maximum;
+	}
+
+	public void setMaximum(int maximum) {
+		this.maximum = maximum;
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -14,10 +14,12 @@ class SearchableTable {
             let tableRows = '';
             for (let row of this.tableData) {
                 if (!(searchText) || row.join(' ').includes(searchText)) {
-                    let {id, productid, productname} = row;
+                    let {id, productid, productname, minimum, maximum} = row;
                     tableRows += `<tr class="d-flex">
                         <td class="col-1">${productid}</td>
-                        <td class="col-5">${productname}</td>
+                        <td class="col-2">${productname}</td>
+                        <td class="col-2">${minimum}</td>
+                        <td class="col-2">${maximum}</td>
                         <td class="col-1">
 			                <a href="delete/${id}"><i class="fa fa-trash" style="color:tomato"></i>
 			                </a>

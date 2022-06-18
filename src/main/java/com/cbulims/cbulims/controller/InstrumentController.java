@@ -31,8 +31,9 @@ public class InstrumentController {
 	}
 	
 	@GetMapping("/instruments/damaged")
-	public String showDamagedInstruments() {
-		return "instruments/damaged";
+	public String showDamagedInstruments(Model model) {
+		model.addAttribute("damaged", instrumentRepository.findByDamagedTrue());
+		return "instruments/damagedins";
 	}
 	
 	@GetMapping("/instruments/addnew")
@@ -44,6 +45,13 @@ public class InstrumentController {
 	
 	@PostMapping("saveinstrument")
 	public String saveNewInstrument(@ModelAttribute("newinstrument")Instrument instrument) {
+
+		if("Not Damaged".equals(instrument.getInsCondition())) {
+			instrument.setDamaged(false);
+		}
+		if ("Damaged".equals(instrument.getInsCondition())) {
+			instrument.setDamaged(true);
+		}
 		instrumentRepository.save(instrument);
 		return "redirect:/instruments/all";
 	}
@@ -57,7 +65,7 @@ public class InstrumentController {
 	@RequestMapping(value = "/editinstrument")
 	private String editRow(@RequestParam Integer id, Model model) {
 		model.addAttribute("editrecord", instrumentRepository.findById(id));
-		return "Instruments/editinstrument";
+		return "Instruments/editins";
 	}
 	
 }

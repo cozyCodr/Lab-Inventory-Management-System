@@ -81,7 +81,7 @@
               <a href="/about"> About the Developers</a>
             </p>
             <br /><br />
-            <form th:action="@{/logout}" style="width: 80%; margin: auto">
+            <form th:action="@{logout}" method="post" style="width: 80%; margin: auto">
               <button class="btn btn-danger btn-block" type="submit">Logout</button>
             </form>
           </ul>
@@ -111,8 +111,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="content">
-                            <h2>Order of Expiration</h2>
-                            <p>Chemicals with expiration date due soon</p>
+                            <h2>Damaged Istruments</h2>
+                            <p>Lab Instrumentation Labeled as Damaged</p>
                         </div>
                     </div>
                 </div>
@@ -127,15 +127,16 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col" >Label</th>
-                                        <th scope="col" >Exp-date</th>
+                                        <th scope="col" >Name</th>
+                                        <th scope="col" >Condition</th>
+                                        <th scope="col" >Qty</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tableBody">
-                                	<tr th:each= "chemical: ${soontoexp}">
-	                                	<td th:text="${chemical.chemName}"></td>
-	                                	<td th:text="${chemical.expiryDate}"></td>
-	                                	
+                                	<tr th:each= "instrument: ${damaged}">
+	                                	<td th:text="${instrument.insName}"></td>
+	                                	<td th:text="${instrument.insCondition}"></td>
+	                                	<td th:text="${instrument.damagedQty}"></td>
 	                                </tr>
                                 </tbody>
                             </table>

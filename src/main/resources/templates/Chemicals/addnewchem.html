@@ -128,25 +128,17 @@
                             <form action="#" th:action="@{/addchemical}" th:object="${newchemical}"  method="post" style="max-width: 400px; margin: auto;">
                               
 	                                <div class="form-group">
-	                                    <label for="exampleFormControlInput1">Product Name</label>
+	                                    <label for="exampleFormControlInput1">Product Name [Min:Max]</label>
 	                                    <select th:field="*{chemName}" class="cust-form-control" required>
 	                                    	<option th:each="id : ${idlist}"
 								                th:value="${id.productname}"
-								                th:text="${id.productname} + ' ' + '(' + ${id.productid} + ')'">
+								                th:text="${id.productname} + ' ' + '[' + ${id.minimum} + ':' + ${id.maximum}+ ']'">
 								            </option>
 	                					</select>
 	                                </div>
 	                                <div class="form-group">
 	                                    <label for="exampleFormControlInput1">Quantity (L)</label>
 	                                    <input th:field="*{chemQuantity}" type="number" class="cust-form-control" placeholder="0.5" required>
-	                                </div>
-	                                <div class="form-group">
-	                                    <label for="exampleFormControlInput1">Minimum</label>
-	                                    <input th:field="*{chemMin}" type="number" class="cust-form-control" readonly>
-	                                </div>
-	                                <div class="form-group">
-	                                    <label for="exampleFormControlInput1">Maximum</label>
-	                                    <input th:field="*{chemMax}" type="number" class="cust-form-control" readonly>
 	                                </div>
 	                                <div class="form-group">
 	                                    <label for="exampleFormControlInput1">Set Exp Date</label>

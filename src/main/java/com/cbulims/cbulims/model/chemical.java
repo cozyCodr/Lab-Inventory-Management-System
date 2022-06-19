@@ -18,6 +18,9 @@ public class chemical {
 	@Column
 	private Date expiryDate;
 	
+	@Column(name="toExpire")
+	private boolean toExpire = false;
+	
 	@Column(name="chemQuantity")
 	private int chemQuantity;
 	
@@ -87,6 +90,14 @@ public class chemical {
 
 	public void setChemCondition(String chemCondition) {
 		this.chemCondition = chemCondition;
+	}
+
+	public boolean isToExpire() {
+		return toExpire;
+	}
+
+	public void setToExpire(boolean toexpire) {
+		this.toExpire = toexpire;
 	}
 	
 }

@@ -140,7 +140,7 @@
                                 <tbody id="tableBody">
                                 	<tr th:each= "chemical: ${allchemicals}">
 	                                	<td th:text="${chemical.chemName}"></td>
-	                                	<td >Good</td>
+	                                	<td th:text="${chemical.chemCondition}"></td>
 	                                	<td th:text="${chemical.chemQuantity}"></td>
 	                                	<td th:text="${chemical.expiryDate}"></td>
 	                                	<td>

@@ -20,8 +20,11 @@ private final IDListRepository idListRepository;
 	}
 	
 	@PostMapping("/addid")
-	public String addNewId(@ModelAttribute("idlist")IDList idlist, Model model) {
-		idListRepository.save(idlist);
+	public String addNewId(@ModelAttribute("idlist")IDList idlist, Model model) {		
+		IDList prod = idListRepository.findByProductname(idlist.getProductname());
+		if (prod == null) {
+			idListRepository.save(idlist);     //Add New Id to Database If and Only if it does not already exist.
+		}
 		model.addAttribute("idlist", idListRepository.findAll());
 		return "redirect:/settings";
 	}

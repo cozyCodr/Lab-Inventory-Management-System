@@ -65,10 +65,13 @@ public class ChemicalsController {
 		IDList subjectId = idListRepository.findByProductname(chem.getChemName());		
 		
 		//UPDATE if chemical already exists else SAVE
-		if (subjectChem != null) 
+		if (subjectChem != null)  
 		{
-			checkExpiry(subjectChem);
+			subjectChem.setToExpire(checkExpiry(subjectChem));
 			updateChemical(chem, subjectChem, subjectId);
+			//Delete from expired chemicals list if toExxpire is false
+			if((subjectChem.isToExpire() == false) && (expMessageRepository.findByChemicalName(subjectChem.getChemName()) != null))
+				expMessageRepository.deleteByChemicalName(subjectChem.getChemName());
 			chemicalRepository.save(subjectChem);
 		}
 		else {

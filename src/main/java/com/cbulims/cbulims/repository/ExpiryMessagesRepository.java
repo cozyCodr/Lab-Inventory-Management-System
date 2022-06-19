@@ -6,6 +6,6 @@ import com.cbulims.cbulims.model.ChemicalExpiryMessage;
 
 public interface ExpiryMessagesRepository extends JpaRepository<ChemicalExpiryMessage, Integer> {
 
-	ChemicalExpiryMessage findByChemicalName();
-	void deleteByChemicalName();
+	ChemicalExpiryMessage findByChemicalName(String string);
+	void deleteByChemicalName(String string);
 }

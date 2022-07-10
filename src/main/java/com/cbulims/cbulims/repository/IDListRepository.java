@@ -8,6 +8,6 @@ import com.cbulims.cbulims.model.IDList;
 @Repository
 public interface IDListRepository extends JpaRepository<IDList, Integer> {
 	
-	IDList findByProductname(String string);
+	IDList findByProductName(String string);
 
 }

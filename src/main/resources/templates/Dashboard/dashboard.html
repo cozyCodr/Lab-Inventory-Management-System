@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CBU LIMS | Dashboard</title>
-    <link rel="stylesheet" href="styles/dashboard/dashboard.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{styles/dashboard/dashboard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{styles/bootstrap_3_3_7_css_bootstrap.css}">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+    <link th:href="@{styles/font-awesome_4_7_0.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{styles/all.css}" rel="stylesheet" type="text/css" />
   </head>
 <body>
         <aside class="side-nav" id="show-side-navigation1">
@@ -26,7 +27,7 @@
               <p>Lab Assistant</p>
             </div>
           </div>
-        
+          <div>
           <ul class="categories">
         
             <p>
@@ -36,50 +37,51 @@
         
             <li><i class="fa fa-support fa-fw"></i><a href="#"> Chemicals</a>
               <ul class="side-nav-dropdown">
-                <li><a href="/chemicals/all">View All</a></li>
-                <li><a href="/chemicals/toexpire">Soon to Expire</a></li>
-                <li><a href="/chemicals/addnew">Add New</a></li>
+                <li><a th:href="@{/chemicals/all}">View All</a></li>
+                <li><a th:href="@{/chemicals/toexpire}">Soon to Expire</a></li>
+                <li><a th:href="@{/chemicals/addnew}">Add New</a></li>
               </ul>
             </li>
         
             <li><i class="fa fa-envelope fa-fw"></i><a href="#"> Instruments</a>
               <ul class="side-nav-dropdown">
-                <li><a href="/instruments/all">View All</a></li>
-                <li><a href="/instruments/damaged">Damaged</a></li>
-                <li><a href="/instruments/addnew">Add New</a></li>
+                <li><a th:href="@{/instruments/all}">View All</a></li>
+                <li><a th:href="@{/instruments/damaged}">Damaged</a></li>
+                <li><a th:href="@{/instruments/addnew}">Add New</a></li>
               </ul>
             </li>
         
             <!-- User Manual -->
             <p>
               <i class="fa fa-book fa-fw"></i>
-              <a href="/documentation"> Documentation</a>
+              <a th:href="@{/documentation}"> Documentation</a>
             </p>
             <p>
               <i class="fa fa-handshake-o fa-fw"></i>
-              <a href="/ordered"> Ordered</a>
+              <a th:href="@{/ordered}"> Ordered</a>
             </p>
             <p>
               <i class="fa fa-quote-right fa-fw"></i>
-              <a href="/notify"> Notify Purchasing</a>
+              <a th:href="@{/notify}"> Notify Purchasing</a>
             </p>
             <p>
               <i class="fa fa-bell fa-fw"></i>
-              <a href="/notifications"> Notifications <span class="num prim">6</span></a>
+              <a th:href="@{/notifications}"> Notifications <span class="num prim" th:text="${notscount}"></span></a>
             </p>
             <p>
               <i class="fa fa-wrench fa-fw"></i>
-              <a href="/settings"> Settings </a>
+              <a th:href="@{/settings}"> Settings </a>
             </p>
             <p>
               <i class="fa fa-code fa-fw"></i>
-              <a href="/about"> About the Developers</a>
+              <a th:href="@{/about}"> About the Developers</a>
             </p>
             <br /><br />
             <form th:action="@{logout}" method="post" style="width: 80%; margin: auto">
               <button class="btn btn-danger btn-block" type="submit">Logout</button>
             </form>
           </ul>
+          </div>
         </aside>
     
     <section id="contents">
@@ -115,50 +117,56 @@
       <section class="statistics">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="box">
-                <i class="fa fa-envelope fa-fw bg-primary"></i>
-                <div class="info">
-                  <h3>1,245</h3> <span>Emails</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                <div class="stat-identifier">
+                  <i class="fas fa-vial fa-fw bg-primary" ></i>
+                  <div class="info">
+                    <span>Chemicals Total</span>
+                  </div>
+                </div>
+                <div class="stat-count">
+                    <p th:text="${chemcount}"></p>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="box">
-                <i class="fa fa-file fa-fw danger"></i>
-                <div class="info">
-                  <h3>34</h3> <span>Projects</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                <div class="stat-identifier">
+                  <i class="fas fa-microscope fa-fw bg-primary" ></i>
+                  <div class="info">
+                    <span>Instrument Total</span>
+                  </div>
+                </div>
+                <div class="stat-count">
+                    <p th:text="${instcount}"></p>
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="box">
-                <i class="fa fa-users fa-fw success"></i>
-                <div class="info">
-                  <h3>5,245</h3> <span>Users</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                <div class="stat-identifier">
+                  <i class="fas fa-check-circle fa-fw success" ></i>
+                  <div class="info">
+                    <span>Requested Items</span>
+                  </div>
+                </div>
+                <div class="stat-count">
+                    <p th:text="${ordcount}"></p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-      
-      <section class="charts">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="chart-container">
-                <h3>Chart</h3>
-                <canvas id="myChart"></canvas>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="chart-container">
-                <h3>Chart2</h3>
-                <canvas id="myChart2"></canvas>
+            <div class="col-md-3">
+              <div class="box">
+                <div class="stat-identifier">
+                  <i class="fas fa-exclamation fa-fw danger"></i>
+                  <div class="info">
+                    <span>Needing attention</span>
+                  </div>
+                </div>
+                <div class="stat-count">
+                  <p th:text="${expcount}"></p>
+                </div>
               </div>
             </div>
           </div>
@@ -168,128 +176,50 @@
       <section class="admins">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="box">
-                <h3>Admins:</h3>
-                <div class="admin">
-                  <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148906966/small/1501685402/enhance" alt="admin">
+                <div>
+                  <div class="col-md-8">
+                    <div class="admin logger">
+                      <div class="info">
+                        <div>Latest Notifications</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div class="admin logger">
+                      <div class="info">
+                        <div>Damaged / To Expire</div>
+                        <div></div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="admin">
-                  <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907137/small/1501685404/enhance" alt="admin">
-                  </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="admin">
-                  <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance" alt="admin">
-                  </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                  <div class="col-md-4" >
+                    <div class="admin logger" style="height: 235px">
+                      <div class="info">
+                        <div>Ordered</div>
+                        <div></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="box">
-                <h3>Moderators:</h3>
-                <div class="admin">
-                  <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907114/small/1501685404/enhance" alt="admin">
-                  </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="admin">
-                  <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907086/small/1501685404/enhance" alt="admin">
-                  </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="admin">
-                  <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="admin">
-                  </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                <div class="col-md-12">
+                  <div class="admin logger" >
+                      <div class="info" >
+                        <div>Log</div>
+                        <div></div>
+                      </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-      </section>
-      
-      <section class='statis text-center'>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="box bg-primary">
-                <i class="fa fa-eye"></i>
-                <h3>5,154</h3>
-                <p class="lead">Page views</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="box danger">
-                <i class="fa fa-user-o"></i>
-                <h3>245</h3>
-                <p class="lead">User registered</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="box warning">
-                <i class="fa fa-shopping-cart"></i>
-                <h3>5,154</h3>
-                <p class="lead">Product sales</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="box success">
-                <i class="fa fa-handshake-o"></i>
-                <h3>5,154</h3>
-                <p class="lead">Transactions</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <section class="chrt3">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-9">
-              <div class="chart-container">
-                <canvas id="chart3" width="100%"></canvas>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </div></section>
+
     </section>
     
-    <script src='https://code.jquery.com/jquery-latest.js'></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
-    <script src="js/dashboard.js" type="text/javascript"></script>
+    <script th:src='@{js/jquery-latest.js}'></script>
+    <script th:src="@{js/bootstrap_3_3_7.js}" ></script>
+    <script th:src="@{js/chartjs.bundle.js}"></script>
+    <script th:src="@{js/dashboard.js}" type="text/javascript"></script>
 </body>
 </html>

@@ -16,10 +16,10 @@ public class IDList {
 	private Integer id;
 	
 	@Column(name="productId")
-	private String productid;
+	private String productId;
 	
 	@Column(name="productName")
-	private String productname;
+	private String productName;
 	
 	@Column(name="minimum")
 	private int minimum;
@@ -52,20 +52,20 @@ public class IDList {
 		this.id = id;
 	}
 
-	public String getProductid() {
-		return productid;
+	public String getProductId() {
+		return productId;
 	}
 
-	public void setProductid(String productid) {
-		this.productid = productid;
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
-	public String getProductname() {
-		return productname;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setProductname(String productname) {
-		this.productname = productname;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	
 }

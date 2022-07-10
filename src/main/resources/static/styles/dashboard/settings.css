@@ -47,3 +47,18 @@ thead {
 	justify-content: space-between;
 	margin-bottom: 1rem;
 }
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-flex {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.statistics .box div i {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}

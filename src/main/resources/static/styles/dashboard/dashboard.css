@@ -112,7 +112,6 @@ body {
 
 .categories>p>a,
 i {
-    padding-left: .3rem;
     color: #AAA;;
 }
 
@@ -287,6 +286,24 @@ i {
 
 
 /* Start statistics */
+.stat-count {
+    background-color: #272733;
+    height: auto;
+    width: 20%;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orange;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.stat-identifier {
+    display: flex;
+    width: 80%;
+    padding: 8px 0;
+}
+
 .statistics {
     margin-top: 25px;
     color: #CCC;
@@ -294,24 +311,29 @@ i {
 
 .statistics .box {
     background-color: #313348;
-    padding: 15px;
+    padding: 0 0 0 15px;
     overflow: hidden;
+    display: flex;
 }
 
-.statistics .box>i {
+.statistics .box div i {
     float: left;
     color: #FFF;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .statistics .box .info {
     float: left;
     width: auto;
     margin-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .statistics .box .info h3 {
@@ -382,6 +404,10 @@ i {
 
 .admins .box .info p {
     color: #BBB
+}
+
+.logger {
+    height: 110px;
 }
 
 /* End users */

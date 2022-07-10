@@ -3,7 +3,7 @@
   <head>
     <meta charset="ISO-8859-1">
     <title>CBU LIMS | Not Found</title>
-    <link rel="stylesheet" href="styles/404.css" type="text/css">
+    <link rel="stylesheet" th:href="@{/styles/404.css}" type="text/css">
   </head>
 <body>
 	<div class="code-area">
@@ -30,6 +30,6 @@
 		  </span>
 	  </span>
 	</div>
-  <script src="js/404.js" type="text/javascript"></script>
+  <script th:src="@{/js/404.js}" type="text/javascript"></script>
 </body>
 </html>

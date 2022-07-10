@@ -1,0 +1,7 @@
+.isOpened {
+    background-color: inherit;
+}
+
+.isNotOpened {
+    background-color: rgba(61, 255, 31, 0.3);
+}

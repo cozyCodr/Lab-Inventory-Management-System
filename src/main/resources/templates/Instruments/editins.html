@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <meta charset="ISO-8859-1">
     <title>CBU LIMS | Add New Chemicals</title>
-    <link rel="stylesheet" href="/styles/dashboard/dashboard.css" type="text/css">
-    <link rel="stylesheet" href="/styles/chemicals/addnewchem.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/styles/dashboard/dashboard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/styles/chemicals/addnewchem.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/styles/bootstrap_3_3_7_css_bootstrap.css}">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"
-        type="text/css" />
+    <link th:href="@{/styles/font-awesome_4_7_0.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/styles/all.css}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -125,36 +123,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box">
-                            <form action="#" th:action="@{/saveinstrument}" th:object="${editrecord}"  method="post" style="max-width: 400px; margin: auto;">
+                            <form action="#" th:action="@{/saveedit}" th:object="${editrecord}"  method="post" style="max-width: 400px; margin: auto;">
+
                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Id</label>
-                                    <input th:field="*{id}" type="number" class="cust-form-control" readonly>
-                                </div>
-                               <div class="form-group">
-                                    <label for="exampleFormControlInput1">Name</label>
-                                    <input th:field="*{insName}" type="text" class="cust-form-control" readonly>
+                                    <label for="insName">Name</label>
+                                    <input id="insName" th:field="*{insName}" type="text" class="cust-form-control" readonly>
                                 </div>
          
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Quantity (L)</label>
-                                    <input th:field="*{insQuantity}" type="number" class="cust-form-control" required>
+                                    <label for="insQuantity">Quantity (L)</label>
+                                    <input id="insQuantity" th:field="*{insQuantity}" type="number" class="cust-form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Threshold</label>
-                                    <input th:field="*{instrumentThreshold}" type="number" class="cust-form-control" required>
+                                    <label for="instrumentThreshold">Threshold</label>
+                                    <input id="instrumentThreshold" th:field="*{instrumentThreshold}" type="number" class="cust-form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Condition (is damaged?)</label>
+                                    <label for="insCondition">Condition (is damaged?)</label>
                                     <div>
-	                                    <select class="cust-form-control" th:field="*{insCondition}" >
+	                                    <select id="insCondition" class="cust-form-control" th:field="*{insCondition}" >
 	                                    	<option type="text" value="Not Damaged">Not Damaged</option>
 	                                    	<option type="text" value="Damaged" >Damaged</option>
 	                                    </select >
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Damaged Qty</label>
-                                    <input th:field="*{damagedQty}" type="number" class="cust-form-control" required>
+                                    <label for="damagedQty">Damaged Qty</label>
+                                    <input id="damagedQty" th:field="*{damagedQty}" type="number" class="cust-form-control" required>
                                 </div>
                                 <button class="btn btn-primary btn-block" type="submit">Update</button>
                             </form>
@@ -219,12 +214,10 @@
 
     </section>
 
-    <script src='http://code.jquery.com/jquery-latest.js'></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
-    <script src="/js/dashboard.js" type="text/javascript"></script>
+    <script th:src='@{/js/jquery-latest.js}'></script>
+    <script th:src="@{/js/bootstrap_3_3_7.js}" ></script>
+    <script th:src="@{/js/dashboard.js}" type="text/javascript"></script>
+    <script th:src="@{/js/settings.js}" type="text/javascript"></script>
 </body>
 
 </html>

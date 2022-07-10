@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>CBU LIMS | Signed Up Successfully</title>
-	<link rel="stylesheet" href="styles/login.css" type="text/css">
+	<link rel="stylesheet" th:href="@{/styles/login.css}" type="text/css">
 </head>
 <body>
 	<div class="login">
 		<div class="img-div">
-			<img class="logo" th:src="@{images/cbulogo.png}">
+			<img class="logo" th:src="@{images/cbulogo.png}"  alt="cbu logo"/>
 		</div>
 	    <form method="post">
 	    	<div class="signup-text">
-	        	<p>Signed up successfuly, <a href="/login">Login</a></p>
+	        	<p>Signed up successfully, <a href="/login">Login</a></p>
 	    	</div>
 	    </form>
 	</div>

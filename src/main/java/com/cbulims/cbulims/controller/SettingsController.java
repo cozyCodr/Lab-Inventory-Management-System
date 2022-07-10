@@ -21,7 +21,7 @@ private final IDListRepository idListRepository;
 	
 	@PostMapping("/addid")
 	public String addNewId(@ModelAttribute("idlist")IDList idlist, Model model) {		
-		IDList prod = idListRepository.findByProductname(idlist.getProductname());
+		IDList prod = idListRepository.findByProductName(idlist.getProductName());
 		if (prod == null) {
 			idListRepository.save(idlist);     //Add New Id to Database If and Only if it does not already exist.
 		}

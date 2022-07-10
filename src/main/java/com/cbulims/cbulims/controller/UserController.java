@@ -22,16 +22,6 @@ public class UserController {
 		this.userRepo = userRepo;
 	}
 	
-	@GetMapping("/dashboard")
-	public String dashboard() {
-		return "Dashboard/dashboard";
-	}
-	
-	@GetMapping("/")
-	public String home() {
-		return "Dashboard/dashboard";
-	}
-	
 	//User Sign Up
 	@GetMapping("/signup")
 	public String getSignUpForm(Model model) {

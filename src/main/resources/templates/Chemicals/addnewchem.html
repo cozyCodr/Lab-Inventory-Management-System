@@ -3,15 +3,14 @@
 
 <head>
     <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CBU LIMS | Add New Chemicals</title>
-    <link rel="stylesheet" href="/styles/dashboard/dashboard.css" type="text/css">
-    <link rel="stylesheet" href="/styles/chemicals/addnewchem.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/styles/dashboard/dashboard.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/styles/chemicals/addnewchem.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/styles/bootstrap_3_3_7_css_bootstrap.css}">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet"
-        type="text/css" />
+    <link th:href="@{/styles/font-awesome_4_7_0.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/styles/all.css}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -69,10 +68,10 @@
               <i class="fa fa-quote-right fa-fw"></i>
               <a href="/notify"> Notify Purchasing</a>
             </p>
-            <p>
-              <i class="fa fa-bell fa-fw"></i>
-              <a href="/notifications"> Notifications <span class="num prim">6</span></a>
-            </p>
+              <p>
+                  <i class="fa fa-bell fa-fw"></i>
+                  <a th:href="@{/notifications}"> Notifications <span class="num prim" th:text="${notscount}"></span></a>
+              </p>
             <p>
               <i class="fa fa-wrench fa-fw"></i>
               <a href="/settings"> Settings </a>
@@ -128,21 +127,21 @@
                             <form action="#" th:action="@{/addchemical}" th:object="${newchemical}"  method="post" style="max-width: 400px; margin: auto;">
                               
 	                                <div class="form-group">
-	                                    <label for="exampleFormControlInput1">Product Name [Min:Max]</label>
-	                                    <select th:field="*{chemName}" class="cust-form-control" required>
+	                                    <label for="name">Product Name [Min:Max]</label>
+	                                    <select id="name" th:field="*{chemName}" class="cust-form-control" required>
 	                                    	<option th:each="id : ${idlist}"
-								                th:value="${id.productname}"
-								                th:text="${id.productname} + ' ' + '[' + ${id.minimum} + ':' + ${id.maximum}+ ']'">
+								                th:value="${id.productName}"
+								                th:text="${id.productName} + ' ' + '[' + ${id.minimum} + ':' + ${id.maximum}+ ']'">
 								            </option>
 	                					</select>
 	                                </div>
 	                                <div class="form-group">
-	                                    <label for="exampleFormControlInput1">Quantity (L)</label>
-	                                    <input th:field="*{chemQuantity}" type="number" class="cust-form-control" placeholder="0.5" required>
+	                                    <label for="quantity">Quantity (L)</label>
+	                                    <input id="quantity" th:field="*{chemQuantity}" type="number" class="cust-form-control" placeholder="0.5" required>
 	                                </div>
 	                                <div class="form-group">
-	                                    <label for="exampleFormControlInput1">Set Exp Date</label>
-	                                    <input th:field="*{expiryDate}" type="date" class="cust-form-control" placeholder="50" required>
+	                                    <label for="expiry">Set Exp Date</label>
+	                                    <input id="expiry" th:field="*{expiryDate}" type="date" class="cust-form-control" placeholder="50" required>
 	                                </div>
 	                                <button class="btn btn-primary btn-block" type="submit">Add to Inventory</button>
                                 
@@ -208,13 +207,10 @@
 
     </section>
 
-    <script src='https://code.jquery.com/jquery-latest.js'></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
-    <script src="/js/dashboard.js" type="text/javascript"></script>
-    <script src="/js/settings.js" type="text/javascript"></script>
+    <script th:src='@{/js/jquery-latest.js}'></script>
+    <script th:src="@{/js/bootstrap_3_3_7.js}" ></script>
+    <script th:src="@{/js/dashboard.js}" type="text/javascript"></script>
+    <script th:src="@{/js/settings.js}" type="text/javascript"></script>
 </body>
 
 </html>

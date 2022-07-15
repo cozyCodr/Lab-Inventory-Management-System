@@ -77,17 +77,21 @@ public class InstrumentController {
 	public String saveNewInstrument(@ModelAttribute("newinstrument")Instrument instrument) {
 
 		//Check if Instrument Exists
-		Instrument inst = instrumentRepository.findById(instrument.getId()).orElse(null);
+		Instrument inst = instrumentRepository.findByInsName(instrument.getInsName());
+
+		//Get Min and Max details from product id config
 		IDList instId = idlistRepository.findByProductName(instrument.getInsName());
 		int minimum = instId.getMinimum();
 
-		// If not null, add to existing quantity
+
 		if("Not Damaged".equals(instrument.getInsCondition())) {
 			instrument.setDamaged(false);
 		}
 		if ("Damaged".equals(instrument.getInsCondition())) {
 			instrument.setDamaged(true);
 		}
+
+		// If not null, add to existing quantity
 		if (inst != null){
 			//save previous quantity
 			int prevQty = inst.getInsQuantity();
@@ -100,7 +104,7 @@ public class InstrumentController {
 			notificationRepository.save(notification);
 
 			//Check if less quantity is less than minimum
-			if (inst.getInstMin() <= minimum){
+			if (inst.getInsQuantity() <= minimum){
 				Notification notification1 = newNotification(inst, "stock is below the required minimum");
 				notificationRepository.save(notification1);
 			}
@@ -112,7 +116,7 @@ public class InstrumentController {
 			notificationRepository.save(notification);
 
 			//Check if quantity is less than minimum
-			if (instrument.getInstMin() <= minimum){
+			if (instrument.getInsQuantity() <= minimum){
 				Notification notification1 = newNotification(instrument, "stock is below the required minimum");
 				notificationRepository.save(notification1);
 			}
@@ -160,7 +164,7 @@ public class InstrumentController {
 		for (Instrument instrument : allInstruments) {
 			IDList instId = idlistRepository.findByProductName(instrument.getInsName());
 			int min = instId.getMinimum();
-			if (instrument.getInstMin() <= min){
+			if (instrument.getInsQuantity() <= min){
 				Notification notification = newNotification(instrument,"stock is below required minimum");
 			}
 		}

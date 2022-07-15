@@ -121,7 +121,7 @@
                         <div class="box">
                             <form action="#" th:action="@{/saveinstrument}" th:object="${newinstrument}"  method="post" style="max-width: 400px; margin: auto;">
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Instrument Name</label>
+                                    <label for="name">Instrument Name</label>
                                     <select id="name" th:field="*{insName}" class="cust-form-control" required>
                                         <option th:each="id : ${idlist}"
                                                 th:value="${id.productName}"

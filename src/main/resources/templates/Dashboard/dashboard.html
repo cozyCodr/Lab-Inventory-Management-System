@@ -17,9 +17,9 @@
         
         
           <div class="heading">
-            <img
-              src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
-              alt="">
+            <div>
+              <i class="fa fa-user-check" style="font-size: 50px; margin-right: 1rem"></i>
+            </div>
             <div class="info">
               <h3><a href="#">
                   [[${#request.userPrincipal.principal.fullName}]]
@@ -52,10 +52,6 @@
             </li>
         
             <!-- User Manual -->
-            <p>
-              <i class="fa fa-book fa-fw"></i>
-              <a th:href="@{/documentation}"> Documentation</a>
-            </p>
             <p>
               <i class="fa fa-handshake-o fa-fw"></i>
               <a th:href="@{/ordered}"> Ordered</a>
@@ -120,7 +116,7 @@
             <div class="col-md-3">
               <div class="box">
                 <div class="stat-identifier">
-                  <i class="fas fa-vial fa-fw bg-primary" ></i>
+                  <i class="fas fa-vial fa-fw bg-primary" style="margin-left: 1rem"></i>
                   <div class="info">
                     <span>Chemicals Total</span>
                   </div>
@@ -131,9 +127,9 @@
               </div>
             </div>
             <div class="col-md-3">
-              <div class="box">
+              <div class="box" >
                 <div class="stat-identifier">
-                  <i class="fas fa-microscope fa-fw bg-primary" ></i>
+                  <i class="fas fa-microscope fa-fw bg-primary" style="margin-left: 1rem"></i>
                   <div class="info">
                     <span>Instrument Total</span>
                   </div>
@@ -146,7 +142,7 @@
             <div class="col-md-3">
               <div class="box">
                 <div class="stat-identifier">
-                  <i class="fas fa-check-circle fa-fw success" ></i>
+                  <i class="fas fa-check-circle fa-fw success" style="margin-left: 1rem"></i>
                   <div class="info">
                     <span>Requested Items</span>
                   </div>
@@ -159,7 +155,7 @@
             <div class="col-md-3">
               <div class="box">
                 <div class="stat-identifier">
-                  <i class="fas fa-exclamation fa-fw danger"></i>
+                  <i class="fas fa-exclamation fa-fw danger" style="margin-left: 1rem"></i>
                   <div class="info">
                     <span>Needing attention</span>
                   </div>
@@ -180,24 +176,61 @@
               <div class="box">
                 <div>
                   <div class="col-md-8">
-                    <div class="admin logger">
-                      <div class="info">
+                    <div class="admin logger" >
+                      <div class="info" style=" width: 100%">
                         <div>Latest Notifications</div>
-                        <div></div>
+                          <div >
+                              <table class="table">
+                                  <tbody id="tableBody">
+                                  <tr th:each= "notification: ${latestnots}" style="background-color: rgba(19, 44, 209, 0.1); border: none; border-radius: 10px">
+                                    <td th:text="${notification.message}"></td>
+                                      <td>
+                                          <!--Edit Button Start -->
+                                          <!-- Button trigger modal -->
+                                          <a th:href="@{/markread(notid=${notification.id})}" >
+                                              <i class="fa fa-envelope" style="color: inherit; "></i>
+                                          </a>
+                                      </td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                          </div>
                       </div>
                     </div>
                     <div class="admin logger">
-                      <div class="info">
+                      <div class="info" style="width: 100%">
                         <div>Damaged / To Expire</div>
-                        <div></div>
+                        <table class="table">
+                          <tbody id="tableBody">
+                          <tr style="background-color: rgba(209, 44, 19, 0.1); border: none; border-radius: 10px">
+                            <td th:text="${earliestexp != null }? ${earliestexp.chemName} + ' expires on ' + ${earliestexp.expiryDate} : 'Non expiring soon'"></td>
+                          </tr>
+                          <tr style="background-color: rgba(209, 44, 19, 0.1); border: none; border-radius: 10px">
+                            <td th:text="${latestdmg != null }? ${latestdmg.insName} + ' damaged recently' : 'Non damaged Recently' "></td>
+                          </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4" >
                     <div class="admin logger" style="height: 235px">
-                      <div class="info">
-                        <div>Ordered</div>
-                        <div></div>
+                      <div class="info" style=" width: 100%">
+                        <div>Recent Orders</div>
+                          <table class="table">
+                              <tbody id="tableBody">
+                              <tr th:each= "order: ${latestord}" style="background-color: rgba(28, 209, 19, 0.1); border: none; border-radius: 10px">
+                                  <td th:text="${order.quantity} + ' of ' + ${order.product} "></td>
+                                  <td>
+                                      <!--Edit Button Start -->
+                                      <!-- Button trigger modal -->
+                                      <a th:href="@{/markread(ordid=${order.id})}" >
+                                          <i class="fa fa-envelope" style="color: inherit; "></i>
+                                      </a>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
                       </div>
                     </div>
                   </div>

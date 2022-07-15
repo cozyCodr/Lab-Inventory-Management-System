@@ -19,9 +19,9 @@
         
         
           <div class="heading">
-            <img
-              src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
-              alt="">
+              <div>
+                  <i class="fa fa-user-check" style="font-size: 50px; margin-right: 1rem"></i>
+              </div>
             <div class="info">
               <h3><a href="#">
                   [[${#request.userPrincipal.principal.fullName}]]
@@ -54,10 +54,7 @@
             </li>
         
             <!-- User Manual -->
-            <p>
-              <i class="fa fa-book fa-fw"></i>
-              <a href="/documentation"> Documentation</a>
-            </p>
+
             <p>
               <i class="fa fa-handshake-o fa-fw"></i>
               <a href="/ordered"> Ordered</a>
@@ -125,19 +122,18 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="align-to-center">#Id</th>
                                         <th scope="col" class="align-to-center">Product ID</th>
                                         <th scope="col" class="align-to-center">Quantity</th>
                                         <th scope="col" class="align-to-center">Issue</th>
                                         <th scope="col" class="align-to-center">Comments</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="order: ${orderlist}">
-                                        <th th:text="${order.Id}" scope="row" class="align-to-center" />
-                                        <td th:text="${order.product}" class="align-to-center" />
-                                        <td th:text="${order.quantitychem}" class="align-to-center condition" />
-                                        <td th:text="${order.issue}" class="align-to-center" />
+                                        <td th:text="${order.product}" class="align-to-center"></td>
+                                        <td th:text="${order.quantity}" class="align-to-center condition"></td>
+                                        <td th:text="${order.issue}" class="align-to-center"></td>
                                         <td th:text="${order.comments}" class="align-to-center">burnsen burner lo...</td>
                                         <td class="align-to-center">
                                             <a href="#"><i class="fa fa-envelope-open"></i></a>

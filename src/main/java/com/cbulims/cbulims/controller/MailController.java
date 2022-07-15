@@ -27,14 +27,7 @@ public class MailController {
 		String productId = order.getProduct();
 		String issue = order.getIssue();
 		String comments = order.getComments();
-		String quantity;
-		
-		//Set chemical or instrument quantity
-		if(order.getQuantitychem() != 0) {
-			quantity = Integer.toString(order.getQuantitychem());
-		} else {
-			quantity = Integer.toString(order.getQuantityins());
-		}
+		String quantity = order.getQuantity();
 		
 		//send email
 		String toEmail = "purchasing.dept.office@gmail.com";

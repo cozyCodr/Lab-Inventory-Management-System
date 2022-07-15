@@ -9,5 +9,7 @@ import com.cbulims.cbulims.model.Instrument;
 public interface InstrumentRepository extends JpaRepository<Instrument, Integer> {
 
 	//If Damaged	
-	List<Instrument> findByDamagedTrue(); 
+	List<Instrument> findByDamagedTrue();
+
+    Instrument findTopByDamagedTrue();
 }

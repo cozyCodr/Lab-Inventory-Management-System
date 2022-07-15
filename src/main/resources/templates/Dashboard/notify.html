@@ -20,9 +20,9 @@
         
         
           <div class="heading">
-            <img
-              src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
-              alt="">
+              <div>
+                  <i class="fa fa-user-check" style="font-size: 50px; margin-right: 1rem"></i>
+              </div>
             <div class="info">
               <h3><a href="#">
                   [[${#request.userPrincipal.principal.fullName}]]
@@ -55,10 +55,6 @@
             </li>
         
             <!-- User Manual -->
-            <p>
-              <i class="fa fa-book fa-fw"></i>
-              <a href="/documentation"> Documentation</a>
-            </p>
             <p>
               <i class="fa fa-handshake-o fa-fw"></i>
               <a href="/ordered"> Ordered</a>
@@ -130,18 +126,14 @@
                                         <br>
                                     	<select th:field="*{product}" class="cust-form-control" required>
 	                                    	<option th:each="id : ${idlist}"
-								                th:value="${id.productId}"
-								                th:text="${id.productId} + ' ' + '(' + ${id.productName} + ')'">
+								                th:value="${id.productName}"
+								                th:text="${id.productName} + ' ' + '(' + ${id.productId} + ')'">
 								            </option>
                 						</select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlInput1">Quantity (L) (For Chemicals)</label>
-                                        <input type="number" th:field="*{quantitychem}" class="cust-form-control" placeholder="50">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Quantity (For Instruments)</label>
-                                        <input type="number" th:field="*{quantityins}" class="cust-form-control" placeholder="3">
+                                        <label for="exampleFormControlInput1">Quantity</label>
+                                        <input type="text" th:field="*{quantity}" class="cust-form-control" placeholder="eg ... 5L or 5kg">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect2">Issue</label>

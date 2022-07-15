@@ -13,16 +13,13 @@ public class SentOrder {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer Id;
+	private Integer id;
 	
 	@Column(name="ProuductId", nullable = false, length = 9)
 	private String product;
 	
-	@Column(name="ChemQuantity")
-	private int quantitychem;
-	
-	@Column(name="InsQuantity")
-	private int quantityins;
+	@Column
+	private String quantity;
 	
 	@Column(name="Issue", nullable = false, length = 11)
 	private String issue;
@@ -38,28 +35,20 @@ public class SentOrder {
 		this.product = product;
 	}
 
-	public int getQuantitychem() {
-		return quantitychem;
+	public String getQuantity() {
+		return quantity;
 	}
 
-	public void setQuantitychem(int quantitychem) {
-		this.quantitychem = quantitychem;
-	}
-
-	public int getQuantityins() {
-		return quantityins;
-	}
-
-	public void setQuantityins(int quantityins) {
-		this.quantityins = quantityins;
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 	
 	public String getIssue() {

@@ -20,5 +20,6 @@ public interface ChemicalRepository extends JpaRepository<chemical, Integer> {
 	
 	//Find Chemical By Chemical Name
 	chemical findByChemName(String string);
-	
+
+	chemical findTopByToExpireTrueOrderByExpiryDateDesc();
 }

@@ -75,10 +75,11 @@ public class ChemicalsController {
 		//UPDATE if chemical already exists else SAVE
 		if (subjectChem != null)  
 		{
-			subjectChem.setToExpire(checkExpiry(subjectChem));
+
 			subjectChem.setChemQuantity(subjectChem.getChemQuantity() + chem.getChemQuantity());
 			subjectChem.setChemCondition(chem.getChemCondition());
 			subjectChem.setExpiryDate(chem.getExpiryDate());
+			subjectChem.setToExpire(checkExpiry(subjectChem));
 			log.info("subjectchem min:{}, subjectchem max:{}", subjectChem.getChemMin(), subjectChem.getChemMax());
 
 			//Set Condition
@@ -113,13 +114,13 @@ public class ChemicalsController {
 		chemical subjectChem = chemicalRepository.findByChemName(chem.getChemName());
 		IDList subjectId = idListRepository.findByProductName(chem.getChemName());
 
-		subjectChem.setToExpire(checkExpiry(subjectChem));
 		subjectChem.setChemQuantity(chem.getChemQuantity());
 		subjectChem.setChemCondition(chem.getChemCondition());
 		subjectChem.setChemMin(subjectId.getMinimum());
 		subjectChem.setChemMax(subjectId.getMaximum());
 		subjectChem.setExpiryDate(chem.getExpiryDate());
 		subjectChem.setChemCondition(condition(subjectChem));
+		subjectChem.setToExpire(checkExpiry(subjectChem));
 
 		Notification notification = newNotification(subjectChem, "Has been updated via Edit.");
 		notificationRepository.save(notification);

@@ -35,6 +35,10 @@ public class DashboardController {
 		model.addAttribute("expcount", (long) expiryMessagesRepository.findAll().size());
 		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
 		model.addAttribute("ordcount", (long) sentOrderRepository.findAll().size());
+		model.addAttribute("latestnots", notificationRepository.findTop2ByOrderByIdDesc());
+		model.addAttribute("latestord", sentOrderRepository.findTop5ByOrderByIdDesc());
+		model.addAttribute("earliestexp", chemicalRepository.findTopByToExpireTrueOrderByExpiryDateDesc());
+		model.addAttribute("latestdmg", instrumentRepository.findTopByDamagedTrue());
 		return "Dashboard/dashboard";
 	}
 

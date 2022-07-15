@@ -1,5 +1,6 @@
 package com.cbulims.cbulims.controller;
 
+import com.cbulims.cbulims.model.IDList;
 import com.cbulims.cbulims.model.Notification;
 import com.cbulims.cbulims.model.chemical;
 import com.cbulims.cbulims.repository.NotificationRepository;
@@ -48,7 +49,8 @@ public class InstrumentController {
 		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
 		return "Instruments/damagedins";
 	}
-	
+
+	//todo: Add Instruments running out to lists of stock running out
 	@GetMapping("/instruments/addnew")
 	public String addNewInstrument(Model model) {
 		model.addAttribute("idlist", idlistRepository.findAll());
@@ -76,6 +78,9 @@ public class InstrumentController {
 
 		//Check if Instrument Exists
 		Instrument inst = instrumentRepository.findById(instrument.getId()).orElse(null);
+		IDList instId = idlistRepository.findByProductName(instrument.getInsName());
+		int minimum = instId.getMinimum();
+
 		// If not null, add to existing quantity
 		if("Not Damaged".equals(instrument.getInsCondition())) {
 			instrument.setDamaged(false);
@@ -86,17 +91,31 @@ public class InstrumentController {
 		if (inst != null){
 			//save previous quantity
 			int prevQty = inst.getInsQuantity();
+
 			//Assign to new instrument
 			inst = instrument;
 			inst.setInsQuantity(instrument.getInsQuantity() + prevQty);
 			instrumentRepository.save(instrument);
 			Notification notification = newNotification(inst, "has been updated.");
 			notificationRepository.save(notification);
+
+			//Check if less quantity is less than minimum
+			if (inst.getInstMin() <= minimum){
+				Notification notification1 = newNotification(inst, "stock is below the required minimum");
+				notificationRepository.save(notification1);
+			}
+
 		}
 		else {
 			instrumentRepository.save(instrument);
 			Notification notification = newNotification(instrument, "has been added to inventory (new).");
 			notificationRepository.save(notification);
+
+			//Check if quantity is less than minimum
+			if (instrument.getInstMin() <= minimum){
+				Notification notification1 = newNotification(instrument, "stock is below the required minimum");
+				notificationRepository.save(notification1);
+			}
 		}
 
 		return "redirect:/instruments/all";
@@ -131,6 +150,20 @@ public class InstrumentController {
 				notificationRepository.save(notification);
 			}
 		}
-		log.info("Daily chemical expiry check complete");
+		log.info("Daily Damaged Instrument check complete");
+	}
+
+	//	Checks if instrument is below required minimum every 24 hours at 11:07
+	@Scheduled(cron="0 07 11 * * *")
+	private void checkIfLow24hrs() {
+		List<Instrument> allInstruments = instrumentRepository.findAll();
+		for (Instrument instrument : allInstruments) {
+			IDList instId = idlistRepository.findByProductName(instrument.getInsName());
+			int min = instId.getMinimum();
+			if (instrument.getInstMin() <= min){
+				Notification notification = newNotification(instrument,"stock is below required minimum");
+			}
+		}
+		log.info("Daily Instrument stock check complete");
 	}
 }

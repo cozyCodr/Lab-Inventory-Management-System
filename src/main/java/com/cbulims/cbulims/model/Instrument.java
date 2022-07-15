@@ -28,16 +28,11 @@ public class Instrument{
 	@Column(name="damagedQty")
 	private int damagedQty;
 	
-	@Column(name="instrumentThreshold")
-	private int instrumentThreshold;
+	@Column(name="instMin")
+	private int instMin;
 
-	public int getInstrumentThreshold() {
-		return instrumentThreshold;
-	}
-
-	public void setInstrumentThreshold(int instrumentThreshold) {
-		this.instrumentThreshold = instrumentThreshold;
-	}
+	@Column(name="instMax")
+	private int instMax;
 
 	public Integer getId() {
 		return id;
@@ -86,6 +81,20 @@ public class Instrument{
 	public void setDamagedQty(int damagedQty) {
 		this.damagedQty = damagedQty;
 	}
-	
-	
+
+	public int getInstMin() {
+		return instMin;
+	}
+
+	public void setInstMin(int instMin) {
+		this.instMin = instMin;
+	}
+
+	public int getInstMax() {
+		return instMax;
+	}
+
+	public void setInstMax(int instMax) {
+		this.instMax = instMax;
+	}
 }

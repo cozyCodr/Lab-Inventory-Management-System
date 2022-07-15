@@ -19,6 +19,7 @@ public class NotificationController {
     @GetMapping
     public String showNotifications(Model model) {
         model.addAttribute("notslist", notificationRepository.findAll());
+        model.addAttribute("notscount", (long) notificationRepository.findAll().size());
         return "notifications";
     }
 }

@@ -33,7 +33,7 @@ public class DashboardController {
 		model.addAttribute("chemcount", (long) chemicalRepository.findAll().size());
 		model.addAttribute("instcount", (long) instrumentRepository.findAll().size());
 		model.addAttribute("expcount", (long) expiryMessagesRepository.findAll().size());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		model.addAttribute("ordcount", (long) sentOrderRepository.findAll().size());
 		model.addAttribute("latestnots", notificationRepository.findTop2ByOrderByIdDesc());
 		model.addAttribute("latestord", sentOrderRepository.findTop5ByOrderByIdDesc());
@@ -51,14 +51,14 @@ public class DashboardController {
 	public String showSettings(Model model) {
 		model.addAttribute("idlist", idListRepository.findAll());
 		model.addAttribute("newid", new IDList());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Dashboard/settings";
 	}
 	
 	@GetMapping("/ordered")
 	public String showOdered(Model model) {
 		model.addAttribute("orderlist", sentOrderRepository.findAll());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Dashboard/ordered";
 	}
 	
@@ -66,7 +66,7 @@ public class DashboardController {
 	public String showNotifyAdmin(Model model) {
 		model.addAttribute("order", new SentOrder());
 		model.addAttribute("idlist", idListRepository.findAll());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Dashboard/notify";
 	}
 }

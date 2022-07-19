@@ -48,14 +48,14 @@ public class ChemicalsController {
 	public String showAllChemicals(Model model) {
 		model.addAttribute("allchemicals", chemicalRepository.findAll());
 		model.addAttribute("deletechem", new chemical());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Chemicals/chemicalsall";
 	}
 	
 	@GetMapping("/chemicals/toexpire")
 	public String showExpiredChemicals(Model model) {
 		model.addAttribute("soontoexp", chemicalRepository.findByToExpireTrue());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Chemicals/chemicalsexpire";
 	}
 	 
@@ -63,7 +63,7 @@ public class ChemicalsController {
 	public String showOrderedChemicals(Model model) {
 		model.addAttribute("idlist", idListRepository.findAll());
 		model.addAttribute("newchemical", new chemical());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Chemicals/addnewchem";
 	}
 

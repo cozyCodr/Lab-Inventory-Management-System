@@ -39,14 +39,14 @@ public class InstrumentController {
 	public String showAllInstruments(Model model) {
 		model.addAttribute("allinstruments", instrumentRepository.findAll());
 		model.addAttribute("deleteinstrument", new Instrument());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Instruments/instrumentsall";
 	}
 	
 	@GetMapping("/instruments/damaged")
 	public String showDamagedInstruments(Model model) {
 		model.addAttribute("damaged", instrumentRepository.findByDamagedTrue());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Instruments/damagedins";
 	}
 
@@ -55,7 +55,7 @@ public class InstrumentController {
 	public String addNewInstrument(Model model) {
 		model.addAttribute("idlist", idlistRepository.findAll());
 		model.addAttribute("newinstrument", new Instrument());
-		model.addAttribute("notscount", (long) notificationRepository.findAll().size());
+		model.addAttribute("notscount", (long) notificationRepository.findAllByOpenedFalse().size());
 		return "Instruments/addnewinstrument";
 	}
 

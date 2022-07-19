@@ -187,9 +187,6 @@
                                       <td>
                                           <!--Edit Button Start -->
                                           <!-- Button trigger modal -->
-                                          <a th:href="@{/markread(notid=${notification.id})}" >
-                                              <i class="fa fa-envelope" style="color: inherit; "></i>
-                                          </a>
                                       </td>
                                   </tr>
                                   </tbody>
@@ -221,13 +218,7 @@
                               <tbody id="tableBody">
                               <tr th:each= "order: ${latestord}" style="background-color: rgba(28, 209, 19, 0.1); border: none; border-radius: 10px">
                                   <td th:text="${order.quantity} + ' of ' + ${order.product} "></td>
-                                  <td>
-                                      <!--Edit Button Start -->
-                                      <!-- Button trigger modal -->
-                                      <a th:href="@{/markread(ordid=${order.id})}" >
-                                          <i class="fa fa-envelope" style="color: inherit; "></i>
-                                      </a>
-                                  </td>
+                                  
                               </tr>
                               </tbody>
                           </table>

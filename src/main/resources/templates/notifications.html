@@ -123,11 +123,17 @@
                                 <thead>
                                     <tr>
                                         <th scope="col" >Notifications:</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="notification : ${notslist}">
-                                        <td th:text="${notification.message}" th:classappend="${notification.isOpened()} ? 'isOpened': 'isNotOpened'"></td>
+                                        <td th:text="${notification.message}" th:classappend="${notification.isOpened() == true} ? 'isOpened': 'isNotOpened'"></td>
+                                        <td>
+                                            <a th:href="@{/notifications/markseen(notId=${notification.id})}">
+                                                <i class="fa fa-check" th:classappend="${notification.isOpened() == true} ? 'isOpened': 'isNotOpened'"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

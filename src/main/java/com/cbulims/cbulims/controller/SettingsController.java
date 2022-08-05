@@ -2,10 +2,7 @@ package com.cbulims.cbulims.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.cbulims.cbulims.model.IDList;
 import com.cbulims.cbulims.repository.IDListRepository;
@@ -29,9 +26,18 @@ private final IDListRepository idListRepository;
 		return "redirect:/settings";
 	}
 	
-	@RequestMapping(value = "/delete/{id}")
+	@RequestMapping(value = "/deleteid/{id}")
 	private String deleteStudent(@PathVariable(name = "id") String id){
 	    idListRepository.deleteById(Integer.parseInt(id));
 	    return "redirect:/settings";
+	}
+
+	@RequestMapping(value = "/editid")
+	private String editStudent(@RequestParam Integer id, Model model){
+		IDList editid = idListRepository.findById(id).orElse(null);
+		if (editid != null){
+			model.addAttribute("editid", editid);
+		}
+		return "Dashboard/editid";
 	}
 }

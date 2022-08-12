@@ -42,6 +42,6 @@ public class MailController {
 		
 		model.addAttribute("orderlist", sentOrderRepository.findAll());
 		
-		return "Dashboard/ordered";
+		return "redirect:/ordered";
 	}	
 }
